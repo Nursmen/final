@@ -36,18 +36,53 @@
       <!-- we will write all code down -->
       <div class="conteiner">
 
-        <div class="row">
-          <div class="col-5">Created by Nursultan </div>
-          <div class="col-2"></div>
-          <div class="col-5">Soported by Nurhan</div>
-        </div>
-        
+          <div class="text-lnd">
+            <h1>My site with exercises</h1>
+            <p>Created for cs50web course</p>
+          </div>
+          
+          <br>
+
+          <button type="button" class="btn btn-warning start">Start</button>
       </div>
 
+      <script>
+        const button = document.querySelector('.start')
+        button.onclick = function () {
+          location.replace("/exercise")
+        }
+      </script>
 
     <style>
+        .start {
+          width: 160px;
+          height: 80px;
+          margin-top: 330px;
+          margin-left: 50px;
+          animation-name: start;
+          animation-duration: 3s;
+        }
+        @keyframes start {
+          0% {
+            margin-left: 330px;
+            opacity: 0%;
+          }
+          100% {
+            margin-left: 50px;
+            opacity: 100%;            
+          }
+        }
+
+        .text-lnd {
+          margin-top: 70px;
+          margin-left: 50px; 
+        }
         body {
           font-family: 'Edu SA Beginner';
+          background-image: url('https://cdn.pixabay.com/photo/2022/06/07/17/43/sword-lilies-7248948_960_720.jpg') ;
+          background-repeat: no-repeat; /* Do not repeat the image */
+          background-size: cover; 
+          color: white;
         }
 
         nav {
