@@ -1,0 +1,26 @@
+{% extends 'sport/index.html' %}
+
+{% block title %}
+    Create
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <h1>New Day</h1>
+    <form method="POST" class="post-form" action="{%url 'cr_day' %}">{% csrf_token %}
+        {{ form.as_p }}
+        <p>press Ctrl and click</p>
+        <button type="submit" class="save btn btn-warning">Save</button>
+    </form>
+</div>
+
+    {% endblock %}
+
+{% block class1 %}
+class="nav-link" 
+{% endblock %}
+
+{% block class2 %}
+class="nav-link active" 
+{% endblock %}

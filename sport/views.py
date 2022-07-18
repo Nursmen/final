@@ -11,6 +11,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
 from django.db.models import Count
+from .forms import *
 
 # Create your views here.
 def index(request):
@@ -65,3 +66,40 @@ def clean(request):
         program.save()
 
     return redirect('index')
+
+def create_choise(request):
+    exercises = Exercise.objects.all().order_by('text')
+    return render(request, 'sport/create.html', {'exercises':exercises})
+
+def create_element(request):
+    if request.method == 'POST':
+        form = ExerciseForm(request.POST)
+        if form.is_valid():
+            exercise = form.save(commit=False)
+            exercise.save()
+        return redirect('create')
+    form = ExerciseForm()
+    return render(request, 'sport/cr_exercise.html', {'form':form})
+
+def create_program(request):
+    if request.method == 'POST':
+        form = ProgramForm(request.POST)
+        if form.is_valid():
+            program = form.save(commit=False)
+            program.done = 0
+            program.save()
+        return redirect('create')
+    form = ProgramForm()
+    return render(request, 'sport/cr_program.html', {'form':form})
+
+def create_day(request):
+    if request.method == 'POST':
+        form = DayForm(request.POST)
+        if form.is_valid():
+            day = form.save(commit=False)
+            day.done = False
+            day.save()
+            form.save_m2m()
+        return redirect('create')
+    form = DayForm()
+    return render(request, 'sport/cr_day.html', {'form':form})

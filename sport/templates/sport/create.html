@@ -1,0 +1,64 @@
+{% extends 'sport/index.html' %}
+
+{% block title %}
+    Create
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-4">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="mt-2 mb-3 bi bi-chat-right-quote" viewBox="0 0 16 16">
+                    <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+                    <path d="M7.066 4.76A1.665 1.665 0 0 0 4 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112zm4 0A1.665 1.665 0 0 0 8 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112z"/>
+                </svg>
+                <ul class="creat">
+                    <li><a href="">create a program</a></li>
+                    <li><a href="{%url 'cr_exercise'%}">create exercises</a></li>
+                    <li><a href="">create days</a></li>
+                </ul>
+                
+            </div>
+            <div class="col-2"></div>
+            <div class="col">
+                In this page YOU can create your own program and share it to others. I recomend you first of all get experiens, before you will create sth. Not all exercises that easy for you feels same for different people.
+
+                End please keep the ordering, while you create :)
+            </div>
+        </div>
+        <br><br><br><br>
+
+        <div class="container pt-5">
+            <ul>
+                {%for exercise in exercises%}
+                <ol>{{exercise.title|capfirst}}</ol>
+                {%endfor%}
+            </ul>
+        </div>
+    </div>
+
+    <style>
+        .pt-5 {
+            border-top: 3px solid  rgb(16, 90, 90);
+        }
+        ul.creat a {
+            font-size: x-large;
+            text-decoration: none;
+            color: rgb(24,145,145);
+        }
+        ul.creat a:hover {
+            font-size: x-large;
+            text-decoration: none;
+            color: rgb(16, 90, 90);
+        }
+    </style>
+{% endblock %}
+
+{% block class1 %}
+class="nav-link" 
+{% endblock %}
+
+{% block class2 %}
+class="nav-link active" 
+{% endblock %}
