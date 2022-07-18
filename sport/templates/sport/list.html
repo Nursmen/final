@@ -1,0 +1,71 @@
+{% extends 'sport/index.html' %}
+
+{% block title %}
+    Exercises
+{% endblock %}
+
+{% block content %}
+<h1 style="margin: 20px;">Day {{number}}</h1>
+
+<div class="container">
+  {%for exercise in exercises%}
+    <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">{{exercise.title| capfirst }}</div>
+            <div class="col-3">{{exercise.repeat}} times</div>
+            <div class="col-2"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{exercise.text}}</p>
+          <button class="btn btn-primary exe_btn">Go somewhere</button>
+        </div>
+      </div>  
+  {%endfor%}
+</div>
+
+<script>
+  const a = document.querySelectorAll('.exe_btn')
+  for (let index = 0; index < a.length; index++) {
+    const element = a[index];
+    element.addEventListener('click', function handleClick() {
+      console.log('element clicked');
+      element.classList.add('classname')
+      day = `{{number}}`
+      program = `{{program}}`
+      fetch (`{%url 'add' day=number program=program%}`)
+    }); 
+  }
+</script>
+
+<style>
+  .classname {
+    animation: delete 2s 1;
+    background-color: green;
+  }
+  @keyframes delete {
+    0% {
+      background-color: #fff;
+    }
+    100% {
+      background-color: green;
+    }
+  }
+    .card {
+        margin-bottom: 15px;
+    }
+    .row {
+        margin: 0px !important;
+        padding: 0px;
+    }
+</style>
+{% endblock %}
+
+{% block class1 %}
+class="nav-link active" 
+{% endblock %}
+
+{% block class2 %}
+class="nav-link" 
+{% endblock %}

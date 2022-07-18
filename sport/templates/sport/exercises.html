@@ -1,0 +1,37 @@
+{% extends 'sport/index.html' %}
+
+{% block title %}
+    Exercises
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+          {% for program in programs %}
+            <div class="col">
+                <div class="card" style="width: 20rem;">
+                    <img src="{{program.image}}" class="card-img-top" height="220px" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{program.title}}</h5>
+                      <p class="card-text">{{program.text}}</p>
+                      <a href="{%url 'days' program.title%}" class="btn btn-primary">Take it</a>
+                      <div class="progress">
+                        <div class="progress-bar" role="progressbar" style="width: {{program.done}}%" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            {%endfor%}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block class1 %}
+class="nav-link active" 
+{% endblock %}
+
+{% block class2 %}
+class="nav-link" 
+{% endblock %}
